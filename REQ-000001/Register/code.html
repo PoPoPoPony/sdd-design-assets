@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="light" lang="zh-Hant"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>註冊頁面 - BrainGuard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f45f25",
+                        "primary-hover": "#d94a15",
+                        "background-light": "#f8f6f5",
+                        "background-dark": "#221510",
+                        "text-main": "#1c110d",
+                        "text-secondary": "#9c6149",
+                        "border-color": "#e8d6ce",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "Noto Sans TC", "sans-serif"],
+                        "body": ["Lexend", "Noto Sans TC", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', 'Noto Sans TC', sans-serif;
+        }::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-gray-100 min-h-screen flex flex-col font-display antialiased selection:bg-primary/20 selection:text-primary">
+<header class="w-full flex items-center justify-between border-b border-solid border-border-color dark:border-gray-800 px-6 py-4 lg:px-12 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-3 text-text-main dark:text-white cursor-pointer group">
+<div class="size-8 text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-[32px]">neurology</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">失智症檢測小幫手</h2>
+</div>
+<div>
+<a class="text-sm font-medium text-text-secondary dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+                需要幫助？
+            </a>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center p-4 lg:p-8">
+<div class="w-full max-w-[1280px] bg-white dark:bg-[#2a1d18] rounded-2xl lg:rounded-3xl shadow-xl overflow-hidden flex flex-col lg:flex-row min-h-[800px]">
+<div class="relative w-full lg:w-5/12 hidden lg:flex flex-col justify-end p-12 bg-background-light dark:bg-gray-900">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center opacity-90 dark:opacity-60" data-alt="Peaceful elderly couple smiling outdoors in sunlight" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHi42ZYZUb-zSXkJVIGRbg0htXDGgWdaG_v-C30R3A0_JJQwpOsKXesRtCxzvHE1d5MNuTyk-qAIueVU_UuI8HIk-x4zBrNgqkaahSlLsFXNp2xYWeUJR0-ZjFUdYga4fc4ahAa7cujl3T7wrJU4Jo6M62DD62iSVNmcZ9qTHStynsu2zVG8KUiMEp2lH8324wvHVM-5tsSczFlDDImyHCo0bKRKEhzFhyiSF1durvD6X0kEWk7UGrtpX7JiSkyfvTj-rZmJKX72s');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+</div>
+<div class="relative z-10 text-white space-y-4">
+<div class="size-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-white">health_and_safety</span>
+</div>
+<h1 class="text-4xl font-bold leading-tight">守護記憶<br/>從今天開始</h1>
+<p class="text-gray-200 text-lg max-w-sm">透過專業的腦力檢測與個人化追蹤，讓我們一起為您的健康保駕護航。</p>
+</div>
+</div>
+<div class="w-full lg:w-7/12 flex flex-col p-6 sm:p-10 lg:p-16 overflow-y-auto max-h-[90vh] lg:max-h-full">
+<div class="max-w-2xl mx-auto w-full">
+<div class="mb-8">
+<h2 class="text-3xl font-bold text-text-main dark:text-white mb-2">建立新帳戶</h2>
+<p class="text-text-secondary dark:text-gray-400">歡迎加入，請填寫以下資訊以開始您的腦力健康旅程。</p>
+</div>
+<form action="#" class="space-y-6">
+<div class="space-y-4">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main dark:text-gray-200 ml-1" for="email">電子信箱</label>
+<div class="relative">
+<input class="w-full h-12 px-5 rounded-full bg-background-light dark:bg-background-dark/50 border border-border-color dark:border-gray-700 text-text-main dark:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-gray-400" id="email" placeholder="name@example.com" type="email"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none text-[20px]">mail</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main dark:text-gray-200 ml-1" for="password">密碼</label>
+<div class="relative">
+<input class="w-full h-12 pl-5 pr-12 rounded-full bg-background-light dark:bg-background-dark/50 border border-border-color dark:border-gray-700 text-text-main dark:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-gray-400" id="password" placeholder="請輸入密碼" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-text-secondary hover:text-primary transition-colors focus:outline-none" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main dark:text-gray-200 ml-1" for="confirm-password">確認密碼</label>
+<div class="relative">
+<input class="w-full h-12 pl-5 pr-12 rounded-full bg-background-light dark:bg-background-dark/50 border border-border-color dark:border-gray-700 text-text-main dark:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-gray-400" id="confirm-password" placeholder="再次輸入密碼" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-text-secondary hover:text-primary transition-colors focus:outline-none" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-background-light dark:bg-background-dark/30 p-3 rounded-2xl flex items-center gap-3 px-4">
+<span class="text-xs font-medium text-text-secondary dark:text-gray-400 whitespace-nowrap">密碼強度</span>
+<div class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden flex gap-0.5">
+<div class="w-1/3 h-full bg-primary/40"></div>
+<div class="w-1/3 h-full bg-primary/20"></div>
+<div class="w-1/3 h-full bg-transparent"></div>
+</div>
+<span class="text-xs font-bold text-primary">中等</span>
+</div>
+</div>
+<hr class="border-border-color dark:border-gray-800 my-2"/>
+<div class="space-y-4">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main dark:text-gray-200 ml-1" for="nickname">暱稱</label>
+<input class="w-full h-12 px-5 rounded-full bg-background-light dark:bg-background-dark/50 border border-border-color dark:border-gray-700 text-text-main dark:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-gray-400" id="nickname" placeholder="我們該如何稱呼您？" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main dark:text-gray-200 ml-1">性別</label>
+<div class="flex bg-background-light dark:bg-background-dark/50 rounded-full p-1 border border-border-color dark:border-gray-700 h-12 items-center">
+<label class="flex-1 text-center cursor-pointer">
+<input class="peer sr-only" name="gender" type="radio" value="male"/>
+<span class="block py-2 text-sm font-medium text-text-secondary dark:text-gray-400 rounded-full peer-checked:bg-white dark:peer-checked:bg-gray-700 peer-checked:text-primary peer-checked:shadow-sm transition-all hover:text-text-main">男性</span>
+</label>
+<label class="flex-1 text-center cursor-pointer">
+<input class="peer sr-only" name="gender" type="radio" value="female"/>
+<span class="block py-2 text-sm font-medium text-text-secondary dark:text-gray-400 rounded-full peer-checked:bg-white dark:peer-checked:bg-gray-700 peer-checked:text-primary peer-checked:shadow-sm transition-all hover:text-text-main">女性</span>
+</label>
+<label class="flex-1 text-center cursor-pointer">
+<input class="peer sr-only" name="gender" type="radio" value="other"/>
+<span class="block py-2 text-sm font-medium text-text-secondary dark:text-gray-400 rounded-full peer-checked:bg-white dark:peer-checked:bg-gray-700 peer-checked:text-primary peer-checked:shadow-sm transition-all hover:text-text-main">其他</span>
+</label>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main dark:text-gray-200 ml-1" for="birthdate">出生日期</label>
+<div class="relative">
+<input class="w-full h-12 px-5 rounded-full bg-background-light dark:bg-background-dark/50 border border-border-color dark:border-gray-700 text-text-main dark:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder:text-gray-400 appearance-none" id="birthdate" type="date"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none text-[20px] bg-background-light dark:bg-background-dark/50 pl-2">calendar_today</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-text-main dark:text-gray-200 ml-1" for="education">教育程度</label>
+<div class="relative">
+<select class="w-full h-12 px-5 rounded-full bg-background-light dark:bg-background-dark/50 border border-border-color dark:border-gray-700 text-text-main dark:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all appearance-none cursor-pointer" id="education">
+<option disabled="" selected="" value="">請選擇您的最高學歷</option>
+<option value="primary">國小及以下</option>
+<option value="junior">國中</option>
+<option value="senior">高中/高職</option>
+<option value="university">大學/大專</option>
+<option value="master">碩士及以上</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none text-[24px]">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<div class="pt-2">
+<label class="flex items-start gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer sr-only" type="checkbox"/>
+<div class="h-6 w-6 rounded-md border-2 border-border-color dark:border-gray-600 bg-white dark:bg-gray-800 peer-checked:bg-primary peer-checked:border-primary transition-all flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[16px] opacity-0 peer-checked:opacity-100">check</span>
+</div>
+</div>
+<span class="text-sm text-text-secondary dark:text-gray-400 group-hover:text-text-main dark:group-hover:text-gray-300 transition-colors pt-0.5">
+                                    我同意 <a class="text-primary hover:underline font-medium" href="#">服務條款</a> 和 <a class="text-primary hover:underline font-medium" href="#">隱私政策</a>
+</span>
+</label>
+</div>
+<button class="w-full h-14 bg-primary hover:bg-primary-hover text-white font-bold text-lg rounded-full shadow-lg shadow-primary/30 transform active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2 group" type="button">
+                            立即註冊
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</form>
+<div class="mt-8 text-center">
+<p class="text-text-secondary dark:text-gray-400 text-sm">
+                            已有帳號？
+                            <a class="text-primary font-bold hover:underline inline-flex items-center gap-1" href="#">
+                                直接登入
+                            </a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="py-6 text-center text-xs text-text-secondary/60 dark:text-gray-500">
+        © 2024 BrainGuard Health Technology. All rights reserved.
+    </footer>
+</body></html>
