@@ -26,7 +26,7 @@
 ```
 sdd-design-assets/ (master)
 ├── public/
-│   └── index.html        # 需求清單索引
+│   └── index.html        # README.md
 ├── vercel.json
 ├── package.json
 ├── .gitignore
@@ -37,14 +37,14 @@ sdd-design-assets/ (master)
 ```
 sdd-design-assets/ (feature/REQ-000001)
 ├── public/
-│   ├── index.html        # 該需求的導航頁面
-│   ├── Index/
+│   ├── index.html        # README.md
+│   ├── home/
 │   │   ├── code.html
 │   │   └── screen.png
-│   ├── Login/
+│   ├── login/
 │   │   ├── code.html
 │   │   └── screen.png
-│   └── Register/
+│   └── register/
 │       ├── code.html
 │       └── screen.png
 ├── vercel.json
@@ -58,7 +58,7 @@ sdd-design-assets/ (feature/REQ-000001)
 
 訪問 master 分支的部署：
 ```
-https://your-project.vercel.app
+https://sdd-design-assets.vercel.app
 ```
 
 點擊需求卡片即可查看該需求的設計。
@@ -113,7 +113,7 @@ git pull
 git checkout -b feature/REQ-000002
 
 # 2. 建立設計檔案結構
-mkdir -p public/Dashboard public/Settings
+mkdir -p public/dashboard public/settings
 # 在各資料夾中放入 code.html 和 screen.png
 
 # 3. 建立該需求的導航頁面
@@ -127,7 +127,7 @@ git push -u origin feature/REQ-000002
 
 Vercel 會自動部署，URL 格式：
 ```
-https://your-project-git-feature-req-000002.vercel.app
+https://sdd-design-assets-git-feature-req-000002-popopoponys-projects.vercel.app
 ```
 
 ### PM 修改現有設計
@@ -148,32 +148,11 @@ git push
 
 Vercel 會自動重新部署該分支。
 
-### 更新 Master 索引頁面
-
-當有新需求時，記得在 master 分支更新索引：
-
-```bash
-# 1. 切換回 master
-git checkout master
-
-# 2. 編輯 public/index.html
-# 複製 REQ-000001 的卡片範本，修改為新需求資訊
-
-# 3. 提交
-git add public/index.html
-git commit -m "docs: 新增 REQ-000002 到索引頁面"
-git push
-```
-
 ### 設計完成後（可選）
 
-如果需要保留設計到 master：
+標記為已完成：
 
 ```bash
-# 方案 A：不合併，保持分支獨立（推薦）
-# 分支永久保留，隨時可以查看
-
-# 方案 B：標記為已完成
 git checkout feature/REQ-000001
 git tag -a v1.0-completed -m "設計已完成並交付開發"
 git push origin v1.0-completed
@@ -181,10 +160,35 @@ git push origin v1.0-completed
 
 ## 🌐 Vercel URL 說明
 
-- **Master（索引）**：`https://your-project.vercel.app`
-- **需求分支**：`https://your-project-git-feature-req-XXXXXX.vercel.app`
+### Master 分支（README 說明頁）
+```
+https://sdd-design-assets.vercel.app
+```
 
-JavaScript 會自動偵測環境並生成正確的連結。
+### 功能分支（設計展示）
+```
+# URL 格式
+https://sdd-design-assets-git-[分支名]-popopoponys-projects.vercel.app
+
+# 範例：REQ-000001
+https://sdd-design-assets-git-feature-req-000001-popopoponys-projects.vercel.app
+```
+
+### 訪問設計頁面
+
+每個需求分支的設計頁面路徑：
+```
+# 主畫面
+https://sdd-design-assets-git-feature-req-000001-popopoponys-projects.vercel.app/home/code.html
+
+# 登入頁面
+https://sdd-design-assets-git-feature-req-000001-popopoponys-projects.vercel.app/login/code.html
+
+# 註冊頁面
+https://sdd-design-assets-git-feature-req-000001-popopoponys-projects.vercel.app/register/code.html
+```
+
+**注意**：需要完整路徑包含 `.html` 副檔名。
 
 ## 📝 命名規範
 
@@ -193,8 +197,8 @@ JavaScript 會自動偵測環境並生成正確的連結。
 - 範例：`feature/REQ-000001`, `feature/REQ-000042`
 
 ### 頁面資料夾
-- 使用 PascalCase
-- 範例：`Index`, `Login`, `Register`, `UserProfile`, `Dashboard`
+- 使用小寫 (kebab-case)
+- 範例：`home`, `login`, `register`, `user-profile`, `dashboard`
 
 ### 檔案命名
 - HTML 檔案：`code.html`
@@ -212,7 +216,10 @@ JavaScript 會自動偵測環境並生成正確的連結。
 
 ### Q: 如何查看某個需求的設計？
 
-A: 訪問 master 分支的部署網址，點擊對應的需求卡片。
+A:
+1. 從 Vercel Dashboard 找到對應分支的 URL
+2. 或直接訪問：`https://sdd-design-assets-git-feature-req-XXXXXX-popopoponys-projects.vercel.app/[page-name]/code.html`
+3. 或本地：`git checkout feature/REQ-000001 && npm run dev`
 
 ### Q: 我要修改 REQ-000001 的設計，怎麼做？
 
@@ -228,13 +235,13 @@ git push
 
 Vercel 會自動重新部署這個分支。
 
-### Q: 新增需求要改哪些地方？
+### Q: 如何新增新需求？
 
 A:
 1. 建立新分支：`git checkout -b feature/REQ-000XXX`
-2. 在分支中加入設計檔案
-3. 推送分支讓 Vercel 部署
-4. 切回 master，在 `public/index.html` 加入新需求的卡片
+2. 在 `public/` 中加入設計資料夾和檔案
+3. 推送分支：`git push -u origin feature/REQ-000XXX`
+4. Vercel 會自動部署該分支
 
 ### Q: 本地如何預覽？
 
@@ -256,6 +263,22 @@ A: 這正是架構的優點！每個需求獨立，互不影響。Vercel 會為�
 - **自動部署**：Git push 觸發 Vercel 自動部署
 - **分支隔離**：每個分支有獨立的部署 URL
 - **零維護成本**：Vercel 免費方案足夠使用
+
+## 📊 目前部署狀態
+
+### 已部署的需求
+
+**REQ-000001 - 失智症檢測小幫手**
+- 分支：`feature/REQ-000001`
+- 根路徑：https://sdd-design-assets-git-feature-req-000001-popopoponys-projects.vercel.app
+- 設計頁面：
+  - [主畫面 (Home)](https://sdd-design-assets-git-feature-req-000001-popopoponys-projects.vercel.app/home/code.html)
+  - [登入頁面 (Login)](https://sdd-design-assets-git-feature-req-000001-popopoponys-projects.vercel.app/login/code.html)
+  - [註冊頁面 (Register)](https://sdd-design-assets-git-feature-req-000001-popopoponys-projects.vercel.app/register/code.html)
+
+### Master 分支
+- URL：https://sdd-design-assets.vercel.app
+- 內容：README 說明文件
 
 ## 📄 授權
 
