@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDD 設計資產展示平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+        }
+        .markdown-body {
+            line-height: 1.6;
+        }
+        .markdown-body h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .markdown-body h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .markdown-body h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .markdown-body h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .markdown-body p {
+            margin-bottom: 1rem;
+        }
+        .markdown-body ul, .markdown-body ol {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+        .markdown-body li {
+            margin-bottom: 0.5rem;
+        }
+        .markdown-body code {
+            background-color: #f3f4f6;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+        .markdown-body pre {
+            background-color: #1f2937;
+            color: #f9fafb;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+        }
+        .markdown-body pre code {
+            background-color: transparent;
+            padding: 0;
+            color: #f9fafb;
+        }
+        .markdown-body a {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+        .markdown-body a:hover {
+            color: #1d4ed8;
+        }
+        .markdown-body blockquote {
+            border-left: 4px solid #e5e7eb;
+            padding-left: 1rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+        .markdown-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+        .markdown-body th, .markdown-body td {
+            border: 1px solid #e5e7eb;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        .markdown-body th {
+            background-color: #f3f4f6;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-amber-50 via-orange-50/40 to-rose-50/30 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
+        <div class="bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-stone-200/60">
+            <div id="loading" class="text-center py-12">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                <p class="mt-4 text-gray-600">載入文件中...</p>
+            </div>
+            <div id="content" class="markdown-body hidden"></div>
+        </div>
+
+        <footer class="mt-8 text-center text-slate-500 text-sm">
+            <p>🚀 部署於 Vercel | 📝 自動從 README.md 生成</p>
+        </footer>
+    </div>
+
+    <script>
+        // 載入並渲染 README.md
+        async function loadReadme() {
+            try {
+                const response = await fetch('/README.md');
+                if (!response.ok) {
+                    throw new Error('無法載入 README.md');
+                }
+
+                const markdown = await response.text();
+                const html = marked.parse(markdown);
+
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('content').innerHTML = html;
+                document.getElementById('content').classList.remove('hidden');
+            } catch (error) {
+                document.getElementById('loading').innerHTML = `
+                    <div class="text-red-600">
+                        <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                        </svg>
+                        <p class="font-semibold">載入失敗</p>
+                        <p class="text-sm mt-2">${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // 頁面載入時執行
+        loadReadme();
+    </script>
+</body>
+</html>
